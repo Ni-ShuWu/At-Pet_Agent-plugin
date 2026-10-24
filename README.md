@@ -11,6 +11,7 @@
     |
     |- claude-code      # atpet-claude-code-plugin
     |- opencode         # atpet-opencode-plugin
+     |- opencode-v1      # atpet-opencode-v1-plugin
      |- github-copilot   # atpet-github-copilot-plugin
      |- openai-codex     # atpet-openai-codex-plugin
      |- workbuddy        # atpet-workbuddy-plugin
@@ -28,6 +29,7 @@
 | --- | --- | --- |
 | Claude Code | `atpet-claude-code-plugin` | HTTP hooks |
 | OpenCode | `atpet-opencode-plugin` | OpenCode V2 插件 |
+| OpenCode V1 | `atpet-opencode-v1-plugin` | OpenCode V1 插件 |
 | GitHub Copilot | `atpet-github-copilot-plugin` | Copilot hooks（命令行 + `bridge.mjs`） |
 | OpenAI Codex | `atpet-openai-codex-plugin` | Codex hooks，含权限请求 |
 | WorkBuddy | `atpet-workbuddy-plugin` | CodeBuddy 兼容 hooks |
