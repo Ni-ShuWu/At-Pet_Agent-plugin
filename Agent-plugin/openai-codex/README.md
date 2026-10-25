@@ -42,6 +42,10 @@ node "D:\code\At-Pet_Agent-plugin\Agent-plugin\openai-codex\bridge.mjs" openai-c
 
 `PermissionRequest` 会向 At-Pet 的 `/permission` 提交请求并轮询结果。你在弹窗中选择后，决定会返回给 Codex。若 At-Pet 未运行，插件不做决定，Codex 继续显示它自己的审批提示。
 
+请求会带上 `toolName`、`command`、`description` 以及路径、URL、查询等工具参数，At-Pet 用这些信息判断并高亮可能危险的操作。插件本身不判定危险等级。
+
+Codex 没有提问类工具，因此本插件不涉及提问回传。
+
 ## 注意
 
 - 插件中 `commandWindows` 使用 PowerShell 语法，`$env:PLUGIN_ROOT` 为其环境变量写法。若你的 Codex 在 Windows 上使用其他 shell，请按 shell 语法修改。该写法尚未在真机上验证。

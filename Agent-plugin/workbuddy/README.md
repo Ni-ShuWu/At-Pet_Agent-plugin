@@ -36,4 +36,6 @@
 ## 说明
 
 - 本插件只观察，不替你做权限决定。WorkBuddy 的权限提示会触发桌宠的 `permission` 动画，但允许或拒绝仍在 WorkBuddy 中完成。
+- 提问转发默认关闭。若你的 CodeBuddy 版本实现了 Claude 风格的 `PreToolUse` 决策输出（`permissionDecision: "allow"` + `updatedInput`），可设置 `AT_PET_QUESTION_AGENTS=workbuddy`，并把 `hooks/hooks.json` 中 `PreToolUse` 的 `timeout` 调到 600，然后用 `AskUserQuestion` 试用。CodeBuddy 官方文档使用 `modifiedInput` 字段，和 Claude Code 的 `updatedInput` 不同，开启前请先确认兼容性。
+- 旧版 At-Pet 没有 `/question` 时，提问会自动留在 WorkBuddy 自己的界面。
 - 插件清单位置 `.codebuddy-plugin/plugin.json` 和 `${CODEBUDDY_PLUGIN_ROOT}` 变量名参照 CodeBuddy 的插件规范，尚未在 WorkBuddy 中确认，安装前请以 WorkBuddy 的插件文档为准。

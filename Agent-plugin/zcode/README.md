@@ -30,5 +30,6 @@ ZCode 的插件支持个人来源（Git、URL、本地目录）。
 ## 说明
 
 - 本插件只观察，不做权限决定。
+- 提问转发默认关闭。若 ZCode 的 `PreToolUse` 支持 Claude 风格的 `permissionDecision: "allow"` + `updatedInput`，可设置 `AT_PET_QUESTION_AGENTS=zcode`，并把 `hooks/hooks.json` 中 `PreToolUse` 的 `timeoutMs` 调到 600000 后试用。
 - `hooks/hooks.json` 中的事件名按 Claude Code 风格命名，目前只有 `SessionStart` 在官方样例中得到确认，其余事件请在 ZCode 中用真实会话验证。
 - `${CLAUDE_PLUGIN_ROOT}` 指向插件目录，由 ZCode 注入。

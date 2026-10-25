@@ -30,5 +30,6 @@ DSH 是插件化的 Agent 框架，本插件不写代码，而是通过 DSH 官�
 ## 说明
 
 - DSH 的 Codex 桥接包只支持 5 个事件（`SessionStart`、`UserPromptSubmit`、`PreToolUse`、`PostToolUse`、`Stop`），因此本插件不包含权限请求，也不包含 `SessionEnd`。
+- At-Pet 的提问回传与危险权限提示同样不适用：该桥接不能改写提问工具的参数（没有 `updatedInput`），也没有 `PermissionRequest` 事件。提问和权限仍由 DSH 自己的界面处理。
 - 桥接包不支持 `async` 的 hook。本插件所有 hook 都是同步执行，并且很快返回。
 - 本插件只观察，不做权限决定。

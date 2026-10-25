@@ -30,7 +30,7 @@
 
 ## 说明
 
-- Copilot 的 hook 只负责观察，没有权限回调，因此 At-Pet 不会弹出权限确认。
+- Copilot 的 hook 只负责观察，没有权限回调，因此 At-Pet 不会弹出权限确认，也不会转发提问。
 - 桥接脚本从 hook 的 stdin 读取 `toolName`、`cwd` 等字段；若 payload 中没有会话 ID，则用工作目录生成一个稳定 ID。
 - 如果需要排查，可在命令行手动测试：
   ```powershell
