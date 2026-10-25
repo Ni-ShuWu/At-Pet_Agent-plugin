@@ -18,6 +18,20 @@
 
 把 `hooks/hooks.json` 中的 `hooks` 内容合并到 Claude Code 的 `settings.json`（用户级 `%USERPROFILE%\.claude\settings.json`，或项目级 `.claude\settings.json`），把 `${CLAUDE_PLUGIN_ROOT}` 替换为本目录的绝对路径，然后重启 Claude Code。
 
+## 文件布局
+
+```
+claude-code/
+├── .claude-plugin/plugin.json
+├── hooks/hooks.json
+├── bridge.mjs      # AskUserQuestion 提问回传入口，必须在插件根目录
+└── README.md
+```
+
+- 作为插件加载时，`hooks.json` 通过 `${CLAUDE_PLUGIN_ROOT}/bridge.mjs` 引用本目录的脚本，`${CLAUDE_PLUGIN_ROOT}` 就是 `claude-code` 目录本身。
+- 合并到 `settings.json` 时，把 `${CLAUDE_PLUGIN_ROOT}` 换成本目录的绝对路径；`bridge.mjs` 必须留在本目录，不要移动或改名。
+- 只有 `PreToolUse` 的 `AskUserQuestion` 使用命令 hook；其他事件仍由 At-Pet 的 HTTP 端点处理。
+
 ## 事件映射
 
 | Claude Code hook | 处理 |

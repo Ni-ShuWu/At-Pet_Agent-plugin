@@ -42,6 +42,8 @@
 
 除 Claude Code 与 OpenCode 外，其他插件共用同一份桥接脚本 `bridge.mjs`（零依赖 Node），各自目录内保留一份，便于单独安装。
 
+`bridge.mjs` 固定放在插件目录根部，与 `hooks/`、`package.json` 或插件清单同级。配置里的路径变量（`ABSOLUTE_PATH`、`PLUGIN_ROOT`、`${CLAUDE_PLUGIN_ROOT}`、`${CODEBUDDY_PLUGIN_ROOT}`）指向的都是插件目录本身，而不是 `hooks/` 子目录；单独拷贝配置文件时，请把 `bridge.mjs` 留在原目录，或同步改成它的实际路径。
+
 ## At-Pet 提问与危险权限
 
 At-Pet 1.2 起提供两个能力，插件按 Agent 的 hook 能力接入：

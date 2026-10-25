@@ -26,6 +26,19 @@ node "D:\code\At-Pet_Agent-plugin\Agent-plugin\openai-codex\bridge.mjs" openai-c
 
 完成后在 Codex 中输入 `/hooks`，审核并信任这些 hook。未信任的 hook 不会执行。
 
+## 文件布局
+
+```
+openai-codex/
+├── .codex-plugin/plugin.json
+├── hooks/hooks.json
+├── bridge.mjs      # hook 实际执行入口，必须与 hooks/ 同级
+└── README.md
+```
+
+- `hooks/hooks.json` 用 `PLUGIN_ROOT` 指向本目录（`openai-codex`），不是 `hooks` 子目录；`bridge.mjs` 必须留在本目录。
+- 手动写入 `~/.codex/hooks.json` 时，命令里的路径要写到本目录下的 `bridge.mjs`；不要移动或改名，否则要同步修改命令。
+
 ## 事件映射
 
 | Codex hook | At-Pet 行为 |
