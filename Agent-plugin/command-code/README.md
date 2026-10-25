@@ -29,4 +29,5 @@ Command Code 没有独立的插件清单，接入方式是在 `settings.json` �
 ## 说明
 
 - Command Code 的 hook 只做观察，不会弹出 At-Pet 的权限确认。`PreToolUse` 脚本输出为空，表示允许工具执行，不会阻止任何操作。
+- 提问转发默认关闭。若 Command Code 的 `PreToolUse` 支持 Claude 风格的 `permissionDecision: "allow"` + `updatedInput`，可设置 `AT_PET_QUESTION_AGENTS=command-code`，并把 `PreToolUse` 的 `timeout` 调到 600 后试用。
 - 桥接脚本会忽略 `PreToolUse` 和 `PostToolUse` 之外的 matcher 设置，始终对所有工具发出事件。
