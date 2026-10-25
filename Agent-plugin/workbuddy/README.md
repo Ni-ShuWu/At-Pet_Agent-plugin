@@ -20,6 +20,19 @@
 
 修改后在 CodeBuddy 中运行 `/hooks` 检查配置。
 
+## 文件布局
+
+```
+workbuddy/
+├── .codebuddy-plugin/plugin.json
+├── hooks/hooks.json
+├── bridge.mjs      # hook 实际执行入口，必须与 hooks/ 同级
+└── README.md
+```
+
+- `${CODEBUDDY_PLUGIN_ROOT}` 指向本目录（`workbuddy`），不是 `hooks` 子目录；`bridge.mjs` 必须留在本目录。
+- 手动合并到 `settings.json` 时，把 `${CODEBUDDY_PLUGIN_ROOT}` 换成本目录的绝对路径（正斜杠）。
+
 ## 事件映射
 
 | Hook | At-Pet 事件 |

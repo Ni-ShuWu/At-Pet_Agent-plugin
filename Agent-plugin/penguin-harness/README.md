@@ -12,8 +12,16 @@
 
 这是一个 PenguinHarness 插件（npm 包格式）：
 
+```
+penguin-harness/
+├── package.json
+├── bridge.mjs      # hook 实际执行入口，必须与 package.json 同级
+└── README.md
+```
+
 - `package.json` 的 `penguin.hooks` 声明两个 hook：`user_prompt`（每次提交消息）和 `stop`（每次回合结束）。
 - `bridge.mjs` 从 stdin 读取 `{ hook, session_id, trace_path }`，将事件转发给 At-Pet。
+- 安装时把整个目录作为插件包安装；`package.json` 的 `files` 已包含 `bridge.mjs`，不要单独移动或改名。
 
 ## 安装
 

@@ -12,10 +12,23 @@ DSH 是插件化的 Agent 框架，本插件不写代码，而是通过 DSH 官�
 
 ## 安装
 
-1. 把 `hooks/hooks.json` 中所有 `ABSOLUTE_PATH` 替换为本目录的绝对路径（正斜杠，例如 `D:/code/At-Pet_Agent-plugin/Agent-plugin/deepseek-harness`）。
+1. 把 `hooks/hooks.json` 中所有 `ABSOLUTE_PATH` 替换为**本目录**（`deepseek-harness`，即 `bridge.mjs` 所在目录）的绝对路径（正斜杠，例如 `D:/code/At-Pet_Agent-plugin/Agent-plugin/deepseek-harness`）。
 2. 把 `dsh-hooks.yml` 中的 `ABSOLUTE_PATH` 同样替换，然后把其中的一行挂载配置加入 DSH 的 profile 补丁（`cordis.patch.yml`，或通过 `dsh --patch <文件>` 叠加）。
    - DSH 的 profile 补丁格式以官方文档为准，请先确认补丁文件的位置和写法。
 3. 重新启动 DSH。
+
+## 文件布局
+
+```
+deepseek-harness/
+├── hooks/hooks.json
+├── dsh-hooks.yml
+├── bridge.mjs      # hook 实际执行入口，必须与 hooks/ 同级
+└── README.md
+```
+
+- 两个配置里的 `ABSOLUTE_PATH` 都指向本目录（`deepseek-harness`），不是 `hooks` 子目录。
+- `bridge.mjs` 必须留在本目录；不要移动或改名，否则要同步修改两处配置。
 
 ## 事件映射
 

@@ -10,11 +10,23 @@
 
 ## 安装
 
-1. 把 `hooks/atpet.json` 中所有 `ABSOLUTE_PATH` 替换为本目录的绝对路径，例如 `D:\code\At-Pet_Agent-plugin\Agent-plugin\github-copilot`。
+1. 把 `hooks/atpet.json` 中所有 `ABSOLUTE_PATH` 替换为**本目录**（`github-copilot`，即 `bridge.mjs` 所在目录）的绝对路径，例如 `D:\code\At-Pet_Agent-plugin\Agent-plugin\github-copilot`。
 2. 选一个位置放置修改后的文件：
    - 用户级（所有项目生效）：`%USERPROFILE%\.copilot\hooks\atpet.json`
    - 仓库级：`<仓库>\.github\hooks\atpet.json`
 3. 重启 Copilot CLI。配置在启动时加载。
+
+## 文件布局
+
+```
+github-copilot/
+├── hooks/atpet.json
+├── bridge.mjs      # hook 实际执行入口，必须与 hooks/ 同级
+└── README.md
+```
+
+- `atpet.json` 中的 `ABSOLUTE_PATH` 指向本目录（`github-copilot`），不是 `hooks` 子目录。
+- 把 `atpet.json` 复制到 `~/.copilot/hooks/` 或仓库的 `.github/hooks/` 后，`bridge.mjs` 仍留在本目录；不要移动或改名 `bridge.mjs`，否则要同步修改 `atpet.json` 里的命令。
 
 ## 事件映射
 

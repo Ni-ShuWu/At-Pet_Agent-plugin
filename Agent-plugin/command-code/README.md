@@ -11,11 +11,23 @@ Command Code 没有独立的插件清单，接入方式是在 `settings.json` �
 
 ## 安装
 
-1. 打开 `hooks/settings.example.json`，把其中所有 `ABSOLUTE_PATH` 替换为本目录的绝对路径。
+1. 打开 `hooks/settings.example.json`，把其中所有 `ABSOLUTE_PATH` 替换为**本目录**（`command-code`，即 `bridge.mjs` 所在目录）的绝对路径。
 2. 将其中的 `hooks` 合并到以下任一位置：
    - 用户级（所有项目生效）：`%USERPROFILE%\.commandcode\settings.json`
    - 项目级：`<项目>\.commandcode\settings.json`
 3. 重启 Command Code。
+
+## 文件布局
+
+```
+command-code/
+├── hooks/settings.example.json
+├── bridge.mjs      # hook 实际执行入口，必须与 hooks/ 同级
+└── README.md
+```
+
+- `ABSOLUTE_PATH` 指向本目录（`command-code`），不是 `hooks` 子目录。
+- 把配置合并到 `settings.json` 后，`bridge.mjs` 仍留在本目录；不要移动或改名，否则要同步修改命令。
 
 ## 事件映射
 

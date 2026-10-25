@@ -16,6 +16,19 @@ ZCode 的插件支持个人来源（Git、URL、本地目录）。
 2. 在个人插件中安装 **atpet-zcode-plugin** 并启用。
 3. 完全退出 ZCode 后重新启动，让 hooks 生效。
 
+## 文件布局
+
+```
+zcode/
+├── .zcode-plugin/plugin.json
+├── hooks/hooks.json
+├── bridge.mjs      # hook 实际执行入口，必须与 hooks/ 同级
+└── README.md
+```
+
+- 选择个人来源时选本目录（`zcode`），不要只选 `hooks` 子目录；`hooks.json` 里的 `${CLAUDE_PLUGIN_ROOT}/bridge.mjs` 依赖这个目录结构。
+- 不要移动或改名 `bridge.mjs`，否则要同步修改 `hooks.json` 中的命令。
+
 ## 事件映射
 
 | Hook | At-Pet 事件 |
